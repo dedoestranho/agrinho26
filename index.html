@@ -3,82 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Forte, Futuro Sustentável</title>
+    <title>Agro Forte & Sustentável</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f0f4f0; color: #333; text-align: center; }
-        header { background: #2d5a27; color: white; padding: 40px 20px; }
-        .container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        
-        /* Estilo dos Botões */
-        button { background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 1rem; margin: 10px; transition: 0.3s; }
-        button:hover { background: #45a049; }
+        :root {
+            --verde-agro: #2d5a27;
+            --verde-claro: #81c784;
+            --terra: #5d4037;
+            --bege-fundo: #f9fbf9;
+            --branco: #ffffff;
+        }
 
-        /* Div que será escondida/mostrada */
-        #info-extra { display: none; background: #e8f5e9; padding: 20px; margin-top: 20px; border-radius: 10px; border: 1px dashed #2d5a27; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            background-color: var(--bege-fundo);
+            color: #333;
+        }
 
-        .contador-box { font-size: 2rem; color: #2d5a27; font-weight: bold; margin: 20px 0; }
-        .card { border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-top: 10px; }
+        /* Hero Section */
+        header {
+            background: linear-gradient(135deg, var(--verde-agro), var(--terra));
+            color: var(--branco);
+            padding: 80px 20px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        header h1 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 3rem; 
+            margin: 0; 
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: -40px auto 50px;
+            padding: 20px;
+        }
+
+        /* Cards e Seções */
+        section {
+            background: var(--branco);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        h2 { color: var(--verde-agro); font-family: 'Montserrat', sans-serif; }
+
+        /* Botões Estilizados */
+        .btn-acao {
+            background: var(--verde-agro);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-acao:hover {
+            background: var(--verde-claro);
+            transform: translateY(-2px);
+        }
+
+        /* Dashboard de Impacto */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-card {
+            background: #f1f8e9;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--verde-claro);
+        }
+
+        .numero {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--verde-agro);
+        }
+
+        /* Info Escondida */
+        #detalhes-tecnicos {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-left: 5px solid var(--terra);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer { text-align: center; padding: 40px; color: #888; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Agro Forte, Futuro Sustentável</h1>
-        <p>Equilíbrio entre Produção e Meio Ambiente</p>
+        <p>A Ciência do Equilíbrio: Produção Máxima com Impacto Mínimo</p>
     </header>
 
     <main class="container">
-        <h2>Interatividade e Ciência</h2>
-        <p id="mensagem-principal">O Agro brasileiro utiliza tecnologia para preservar a natureza.</p>
         
-        <button onclick="alterarTexto()">Clique para ver o foco</button>
+        <section>
+            <h2 id="titulo-secao">O Desafio do Século</h2>
+            <p id="texto-descricao">Como alimentar uma população crescente sem destruir nossos biomas?</p>
+            <button class="btn-acao" onclick="mudarVisao()">Ver Resposta da Tecnologia</button>
+        </section>
 
-        <hr>
+        <section>
+            <h2>Simulador de Impacto (Bioinsumos)</h2>
+            <p>Ao substituir fertilizantes químicos por fixação biológica de nitrogênio, o impacto é imediato:</p>
+            <div class="dashboard">
+                <div class="stat-card">
+                    <span class="numero" id="cont-quimicos">0</span>
+                    L de Químicos Evitados
+                </div>
+                <div class="stat-card">
+                    <span class="numero" id="cont-solo">100%</span>
+                    Saúde do Solo
+                </div>
+            </div>
+            <button class="btn-acao" style="margin-top: 20px;" onclick="simularImpacto()">Simular Nova Safra (+500L)</button>
+        </section>
 
-        <h3>Simulador de Impacto Positivo</h3>
-        <p>Ao usar controle biológico, estimamos que você poupou:</p>
-        <div class="contador-box">
-            <span id="contador">0</span> Litros de Químicos
-        </div>
-        <button onclick="atualizarContador()">Adicionar área protegida (+10L)</button>
+        <section>
+            <h2>Pilares da Sustentabilidade</h2>
+            <p>Clique abaixo para entender a base científica do Agro Forte.</p>
+            <button class="btn-acao" onclick="toggleDetalhamento()">Ouvir Especialistas</button>
+            
+            <div id="detalhes-tecnicos">
+                <h4>O Debate: Produtividade vs. Preservação</h4>
+                <p>Estudos da <b>Embrapa</b> provam que a tecnologia de bioinsumos permite que o Brasil produza mais em menos área, protegendo as reservas florestais e garantindo a segurança alimentar global.</p>
+                <ul>
+                    <li>Redução da pegada de carbono.</li>
+                    <li>Preservação de polinizadores (abelhas).</li>
+                    <li>Economia direta para o produtor rural.</li>
+                </ul>
+            </div>
+        </section>
 
-        <hr>
-
-        <h3>O debate sobre Bioinsumos</h3>
-        <button onclick="toggleInfo()">Mostrar/Esconder Detalhes</button>
-        
-        <div id="info-extra">
-            <h4>Por que isso é o futuro?</h4>
-            <p>O uso de fungos e vespas (biocontroladores) permite que a produção cresça sem aumentar o desmatamento, mantendo o solo vivo e saudável para as próximas gerações. Isso é o <b>Agro Forte</b> unido ao <b>Futuro Sustentável</b>.</p>
-        </div>
     </main>
 
     <footer>
-        <p>Trabalho Escolar - Programação e Sustentabilidade &copy; 2026</p>
+        Trabalho Acadêmico: Agro Forte, Futuro Sustentável &copy; 2026
     </footer>
 
     <script>
-        // 1. Altera o texto de um elemento
-        function alterarTexto() {
-            const msg = document.getElementById("mensagem-principal");
-            msg.innerHTML = "<strong>Foco:</strong> Produzir mais em menos espaço com ajuda da biologia!";
-            msg.style.color = "#2d5a27";
+        // Função 1: Manipulação de Texto e Estilo (DOM)
+        function mudarVisao() {
+            const titulo = document.getElementById("titulo-secao");
+            const descricao = document.getElementById("texto-descricao");
+            
+            titulo.innerText = "A Resposta: Intensificação Sustentável";
+            descricao.innerHTML = "A solução está no <strong>Equilíbrio Fino</strong>: usar drones, biotecnologia e análise de dados para produzir mais na mesma terra.";
+            descricao.style.color = "#2d5a27";
         }
 
-        // 2. Atualiza um contador na tela
-        let valorContador = 0;
-        function atualizarContador() {
-            valorContador += 10;
-            document.getElementById("contador").innerText = valorContador;
+        // Função 2: Contador Funcional e Lógica Matemática
+        let litrosEvitados = 0;
+        function simularImpacto() {
+            litrosEvitados += 500;
+            const elementoContador = document.getElementById("cont-quimicos");
+            
+            // Atualiza o texto do elemento na tela
+            elementoContador.innerText = litrosEvitados.toLocaleString('pt-BR');
+            
+            // Adiciona um efeito visual de cor ao clicar
+            elementoContador.style.color = "#4CAF50";
+            setTimeout(() => { elementoContador.style.color = "#2d5a27"; }, 300);
         }
 
-        // 3. Esconde ou mostra uma DIV
-        function toggleInfo() {
-            const div = document.getElementById("info-extra");
-            if (div.style.display === "none" || div.style.display === "") {
-                div.style.display = "block";
+        // Função 3: Mostrar/Esconder Elemento (Toggle)
+        function toggleDetalhamento() {
+            const painel = document.getElementById("detalhes-tecnicos");
+            
+            if (painel.style.display === "none" || painel.style.display === "") {
+                painel.style.display = "block";
             } else {
-                div.style.display = "none";
+                painel.style.display = "none";
             }
         }
     </script>
