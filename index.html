@@ -1,206 +1,614 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Forte & Sustentável</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>BIOagente | O Micro que Alimenta o Macro</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        :root {
-            --verde-agro: #2d5a27;
-            --verde-claro: #81c784;
-            --terra: #5d4037;
-            --bege-fundo: #f9fbf9;
-            --branco: #ffffff;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            background-color: var(--bege-fundo);
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            background: #0A1117;
+            color: #EFF3F5;
+            scroll-behavior: smooth;
+            line-height: 1.5;
         }
 
-        /* Hero Section */
-        header {
-            background: linear-gradient(135deg, var(--verde-agro), var(--terra));
-            color: var(--branco);
-            padding: 80px 20px;
-            text-align: center;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        }
-
-        header h1 { 
-            font-family: 'Montserrat', sans-serif; 
-            font-size: 3rem; 
-            margin: 0; 
+        /* fundo escuro com toque petróleo/grafite */
+        .bg-dark {
+            background: #0F1A1F;
         }
 
         .container {
-            max-width: 1000px;
-            margin: -40px auto 50px;
-            padding: 20px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
 
-        /* Cards e Seções */
         section {
-            background: var(--branco);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(0, 255, 170, 0.1);
         }
 
-        h2 { color: var(--verde-agro); font-family: 'Montserrat', sans-serif; }
+        /* tipografia futurista */
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
 
-        /* Botões Estilizados */
-        .btn-acao {
-            background: var(--verde-agro);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-weight: bold;
+        h2 {
+            font-size: 2.3rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #C0FFE0, #5FDD9D);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+            border-left: 4px solid #4cdb8c;
+            padding-left: 1rem;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 8px rgba(76, 219, 140, 0.3);
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(120deg, #071216 0%, #0A1C1F 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1580773198427-bb6c0c5e27f5?q=80&w=2070&auto=format');
+            background-size: cover;
+            background-position: center 30%;
+            opacity: 0.28;
+            filter: brightness(0.7) contrast(1.2);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #FFFFFF, #B3FFD9);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #CAD6DE;
+            margin-bottom: 2rem;
+        }
+
+        .badge-lab {
+            background: rgba(76, 219, 140, 0.2);
+            backdrop-filter: blur(8px);
+            border-radius: 40px;
+            padding: 0.5rem 1.2rem;
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(76, 219, 140, 0.5);
+        }
+
+        /* cards heróis (flip) */
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 300px;
+            height: 380px;
+            perspective: 1500px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .btn-acao:hover {
-            background: var(--verde-claro);
-            transform: translateY(-2px);
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transform-style: preserve-3d;
+            border-radius: 28px;
         }
 
-        /* Dashboard de Impacto */
-        .dashboard {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-front, .flip-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 28px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(18, 30, 34, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(76, 219, 140, 0.3);
+            box-shadow: 0 20px 35px -15px rgba(0,0,0,0.5);
+        }
+
+        .flip-front {
+            background: linear-gradient(145deg, #14262C, #0D1B1F);
+        }
+
+        .flip-back {
+            background: #0F2128;
+            transform: rotateY(180deg);
+            text-align: left;
+            justify-content: flex-start;
+            gap: 0.8rem;
+        }
+
+        .hero-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 2px solid #4cdb8c;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .flip-back h4 {
+            font-size: 1.5rem;
+            color: #A4FFC3;
+        }
+
+        .flip-back p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* timeline */
+        .timeline {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            position: relative;
+            margin: 2rem 0;
+        }
+        .timeline-item {
+            background: #102026;
+            padding: 1.5rem;
+            border-radius: 24px;
+            width: 30%;
+            min-width: 220px;
+            border-left: 4px solid #4cdb8c;
+            transition: all 0.2s;
+        }
+        .timeline-year {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #6FE3A3;
+        }
+
+        /* lupa virtual */
+        .magnifier-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #0D181E;
+            border-radius: 32px;
+            padding: 1.8rem;
+            margin-top: 2rem;
+        }
+        .zoom-image-wrapper {
+            position: relative;
+            display: inline-block;
+            cursor: crosshair;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        #leafImage {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            display: block;
+            transition: 0.1s;
+        }
+        .magnifier-lens {
+            position: absolute;
+            border: 2px solid #4cdb8c;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(2px);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            display: none;
+            z-index: 10;
+            box-shadow: 0 0 0 2px #aaffdd66;
+        }
+        .zoom-result {
+            margin-top: 1rem;
+            background: #071217;
+            border-radius: 40px;
+            padding: 0.7rem 1.4rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #BAFFD6;
+        }
+
+        /* comparador solo */
+        .solo-comparator {
+            background: #0E1C21;
+            border-radius: 32px;
+            padding: 1.5rem;
             text-align: center;
         }
-
-        .stat-card {
-            background: #f1f8e9;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid var(--verde-claro);
+        .solo-image {
+            max-width: 100%;
+            border-radius: 24px;
+            margin: 1rem 0;
+            border: 1px solid #4cdb8c66;
+            max-height: 320px;
+            object-fit: cover;
+            width: 100%;
+        }
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        .btn-bio {
+            background: transparent;
+            border: 1.5px solid #4cdb8c;
+            padding: 0.7rem 1.6rem;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #D9F2E6;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .btn-bio.active, .btn-bio:hover {
+            background: #4cdb8c;
+            color: #071217;
+            border-color: #4cdb8c;
         }
 
-        .numero {
-            display: block;
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--verde-agro);
+        /* side B / desafios */
+        .lado-b {
+            background: #0C161C;
+            border-radius: 36px;
+            padding: 2rem;
+            margin-top: 1rem;
+            border-left: 5px solid #ffa55c;
         }
 
-        /* Info Escondida */
-        #detalhes-tecnicos {
-            display: none;
-            margin-top: 20px;
-            padding: 20px;
-            background: #f5f5f5;
-            border-left: 5px solid var(--terra);
-            animation: fadeIn 0.5s ease;
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            border-top: 1px solid #1F3A3F;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        @media (max-width: 780px) {
+            h2 { font-size: 1.8rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .timeline-item { width: 100%; margin-bottom: 1rem; }
+            .cards-grid { gap: 1.5rem; }
         }
-
-        footer { text-align: center; padding: 40px; color: #888; font-size: 0.9rem; }
+        .flex-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            background: #0A151B;
+            border-radius: 28px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .tech-card {
+            flex: 1;
+            background: #112228;
+            border-radius: 24px;
+            padding: 1rem;
+        }
+        i {
+            color: #5DEA9B;
+            margin-right: 0.5rem;
+        }
+        .highlight {
+            color: #9EFFC7;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Agro Forte, Futuro Sustentável</h1>
-        <p>A Ciência do Equilíbrio: Produção Máxima com Impacto Mínimo</p>
-    </header>
+<section class="hero">
+    <div class="container hero-content">
+        <div class="badge-lab"><i class="fas fa-microscope"></i> LABORATÓRIO FUTURISTA • BIOFÁBRICA VIVA</div>
+        <h1>A Natureza é a <span class="glow-text">Tecnologia.</span></h1>
+        <p>Como o manejo biológico está aposentando os agrotóxicos e garantindo o futuro do prato brasileiro.</p>
+        <div style="display: flex; gap: 1rem;">
+            <span style="background: #1F3E3A; padding: 0.3rem 1rem; border-radius: 30px;"><i class="fas fa-bug"></i> Insetos benéficos</span>
+            <span style="background: #1F3E3A; padding: 0.3rem 1rem; border-radius: 30px;"><i class="fas fa-seedling"></i> Fixação biológica</span>
+        </div>
+    </div>
+</section>
 
-    <main class="container">
-        
-        <section>
-            <h2 id="titulo-secao">O Desafio do Século</h2>
-            <p id="texto-descricao">Como alimentar uma população crescente sem destruir nossos biomas?</p>
-            <button class="btn-acao" onclick="mudarVisao()">Ver Resposta da Tecnologia</button>
-        </section>
-
-        <section>
-            <h2>Simulador de Impacto (Bioinsumos)</h2>
-            <p>Ao substituir fertilizantes químicos por fixação biológica de nitrogênio, o impacto é imediato:</p>
-            <div class="dashboard">
-                <div class="stat-card">
-                    <span class="numero" id="cont-quimicos">0</span>
-                    L de Químicos Evitados
-                </div>
-                <div class="stat-card">
-                    <span class="numero" id="cont-solo">100%</span>
-                    Saúde do Solo
+<div class="container">
+    <!-- CATÁLOGO DE HERÓIS (CARDS FLIP) -->
+    <section id="herois">
+        <h2><i class="fas fa-dragon"></i> Catálogo de Heróis invisíveis</h2>
+        <p style="margin-bottom: 2rem;">Os organismos que patrulham o agro brasileiro — microscópicos, cirúrgicos e letais para as pragas.</p>
+        <div class="cards-grid">
+            <!-- Card 1: Trichogramma pretiosum -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-front">
+                        <img class="hero-img" src="https://images.unsplash.com/photo-1590736704728-fa577ef5421a?w=200&auto=format" alt="Micro vespa" style="object-fit:cover;">
+                        <h3>Trichogramma <br>pretiosum</h3>
+                        <p style="margin-top: 0.5rem;"><i class="fas fa-dna"></i> Microvespa</p>
+                    </div>
+                    <div class="flip-back">
+                        <h4>⚡ Ficha Técnica</h4>
+                        <p><strong>🎯 Missão:</strong> Eliminar ovos de lagartas (Spodoptera, Helicoverpa) no milho/soja.</p>
+                        <p><strong>🦾 Superpoder:</strong> Parasitoidismo de ovos com precisão cirúrgica, sem afetar abelhas.</p>
+                        <p><strong>🏆 Destaque:</strong> Brasil é líder mundial na aplicação de Trichogramma em larga escala.</p>
+                    </div>
                 </div>
             </div>
-            <button class="btn-acao" style="margin-top: 20px;" onclick="simularImpacto()">Simular Nova Safra (+500L)</button>
-        </section>
-
-        <section>
-            <h2>Pilares da Sustentabilidade</h2>
-            <p>Clique abaixo para entender a base científica do Agro Forte.</p>
-            <button class="btn-acao" onclick="toggleDetalhamento()">Ouvir Especialistas</button>
-            
-            <div id="detalhes-tecnicos">
-                <h4>O Debate: Produtividade vs. Preservação</h4>
-                <p>Estudos da <b>Embrapa</b> provam que a tecnologia de bioinsumos permite que o Brasil produza mais em menos área, protegendo as reservas florestais e garantindo a segurança alimentar global.</p>
-                <ul>
-                    <li>Redução da pegada de carbono.</li>
-                    <li>Preservação de polinizadores (abelhas).</li>
-                    <li>Economia direta para o produtor rural.</li>
-                </ul>
+            <!-- Card 2: Cotesia flavipes -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-front">
+                        <img class="hero-img" src="https://images.unsplash.com/photo-1585355357521-357f3b40b26a?w=200&auto=format" alt="vespa Cotesia">
+                        <h3>Cotesia <br>flavipes</h3>
+                        <p><i class="fas fa-skull"></i> Inimiga da broca</p>
+                    </div>
+                    <div class="flip-back">
+                        <h4>📋 Controle biológico</h4>
+                        <p><strong>🎯 Missão:</strong> Combater a broca-da-cana-de-açúcar e Diatraea saccharalis.</p>
+                        <p><strong>⚡ Superpoder:</strong> Injetar ovos dentro da lagarta, eclodindo e matando a praga de dentro para fora.</p>
+                        <p><strong>🌎 Impacto:</strong> Economia de mais de 1,5 bilhão de dólares/ano em canaviais.</p>
+                    </div>
+                </div>
             </div>
-        </section>
+            <!-- Card 3: Beauveria bassiana -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-front">
+                        <img class="hero-img" src="https://images.unsplash.com/photo-1580216643062-e6a2281b6bf3?w=200&auto=format" alt="fungo entomopatogênico">
+                        <h3>Beauveria <br>bassiana</h3>
+                        <p><i class="fas fa-spore"></i> Fungo aliado</p>
+                    </div>
+                    <div class="flip-back">
+                        <h4>🍄 Ficha do fungo</h4>
+                        <p><strong>🎯 Missão:</strong> Controlar percevejos, cochonilhas e bicudos-do-algodoeiro.</p>
+                        <p><strong>💊 Superpoder:</strong> Penetra cutícula do inseto e causa micose letal, seguro para humanos.</p>
+                        <p><strong>📈 Mercado:</strong> Bioinsumos com fungos crescem 35% ao ano no Brasil.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p style="margin-top: 2rem; text-align: center; font-size: 0.9rem; opacity: 0.9;"><i class="fas fa-chart-line"></i> Brasil: maior produtor e usuário de agentes de biocontrole do mundo.</p>
+    </section>
 
-    </main>
+    <!-- MITOS vs CIÊNCIA -->
+    <section>
+        <h2><i class="fas fa-flask"></i> Mitos vs. Ciência</h2>
+        <div style="background: #0E191F; border-radius: 2rem; padding: 2rem; margin-top: 1rem;">
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <div style="flex:1; border-right: 1px solid #2C515A; padding-right: 1rem;">
+                    <i class="fas fa-question-circle fa-2x" style="color:#FFB347;"></i>
+                    <h3 style="margin:0.5rem 0">"Bioinsumos conseguem alimentar 8 bilhões de pessoas?"</h3>
+                    <p>Dados de agrônomos da Embrapa mostram que o controle biológico NÃO reduz produtividade, pelo contrário, evita resistência de pragas a químicos e preserva polinizadores. Em cultivos como soja e cana, áreas com manejo integrado (biológico+químico racional) têm produtividade igual ou superior, com maior longevidade do solo.</p>
+                </div>
+                <div style="flex:1; padding-left: 0.5rem;">
+                    <i class="fas fa-microchip fa-2x" style="color:#6FE3A3;"></i>
+                    <h3>🔬 Evidência científica</h3>
+                    <p>Pesquisas apontam que pragas criam resistência a defensivos sintéticos em até 10 anos; já com bioinsumos de múltiplos mecanismos, o ciclo de resistência é drasticamente reduzido. Programas de controle biológico aumentaram a resiliência da agricultura brasileira.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-        Trabalho Acadêmico: Agro Forte, Futuro Sustentável &copy; 2026
-    </footer>
+    <!-- LINHA DO TEMPO: REVOLUÇÃO DOS BIOINSUMOS -->
+    <section>
+        <h2><i class="fas fa-chart-simple"></i> Linha do Tempo: Revolução Silenciosa</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="timeline-year">1980-90</div><h4>Dependência química</h4><p>Agrotóxicos dominam; surgimento de pragas resistentes e desequilíbrio ambiental.</p></div>
+            <div class="timeline-item"><div class="timeline-year">HOJE</div><h4>Biofábricas on-farm</h4><p>Mais de 600 unidades produtoras de insetos e fungos, descentralização e redução de custos.</p></div>
+            <div class="timeline-item"><div class="timeline-year">FUTURO</div><h4>Feromônios & edição gênica</h4><p>Confusão sexual sem eliminar insetos, silenciamento gênico e agricultura regenerativa.</p></div>
+        </div>
+        <div class="flex-tech">
+            <div class="tech-card"><i class="fas fa-bacteria fa-2x"></i> <strong>Fix Biológica de Nitrogênio (FBN)</strong><br>Bactérias Bradyrhizobium na soja economizam <span class="highlight">US$ 15 bi/ano</span> ao dispensar adubos nitrogenados químicos.</div>
+            <div class="tech-card"><i class="fas fa-leaf fa-2x"></i> <strong>Programa Nacional de Bioinsumos</strong><br>Política pública federal que incentiva produção local e reduz dependência de importação.</div>
+        </div>
+    </section>
 
-    <script>
-        // Função 1: Manipulação de Texto e Estilo (DOM)
-        function mudarVisao() {
-            const titulo = document.getElementById("titulo-secao");
-            const descricao = document.getElementById("texto-descricao");
-            
-            titulo.innerText = "A Resposta: Intensificação Sustentável";
-            descricao.innerHTML = "A solução está no <strong>Equilíbrio Fino</strong>: usar drones, biotecnologia e análise de dados para produzir mais na mesma terra.";
-            descricao.style.color = "#2d5a27";
+    <!-- EFEITO DE LUPA VIRTUAL (folha com ovos de praga parasitados) -->
+    <section>
+        <h2><i class="fas fa-search-plus"></i> Lupa Virtual: inspeção microscópica</h2>
+        <p>Passe o mouse sobre a folha de soja e veja ovos de lagarta sendo parasitados por microvespas (efeito de aumento).</p>
+        <div class="magnifier-container">
+            <div class="zoom-image-wrapper" id="zoomWrapper">
+                <img id="leafImage" src="https://images.unsplash.com/photo-1591111242304-6c64e5de9fbd?w=700&auto=format" alt="Folha de soja com ovos de praga">
+                <div class="magnifier-lens" id="lens"></div>
+            </div>
+            <div class="zoom-result" id="zoomResultText">
+                🔍 Área ampliada: ovos de Helicoverpa sendo parasitados por Trichogramma (pontos escuros).
+            </div>
+            <p style="font-size:0.8rem; margin-top:1rem;">*Imagem realística: ovos parasitados tornam-se escuros; controle biológico em ação.</p>
+        </div>
+    </section>
+
+    <!-- COMPARADOR DE SOLO (ANTES vs DEPOIS) -->
+    <section>
+        <h2><i class="fas fa-earth-americas"></i> Comparador de Solo: Antes vs. Depois</h2>
+        <div class="solo-comparator">
+            <div class="btn-group">
+                <button id="btnAntes" class="btn-bio active"><i class="fas fa-skull-crosswalk"></i> ANTES (Químico excessivo)</button>
+                <button id="btnDepois" class="btn-bio"><i class="fas fa-seedling"></i> DEPOIS (Manejo biológico)</button>
+            </div>
+            <img id="soloImage" class="solo-image" src="https://images.unsplash.com/photo-1518684079-3c830dcef090?w=600&auto=format" alt="solo compactado">
+            <p id="soloDesc">🔻 Solo compactado, pouca vida microbiana, erosão e ausência de agregados.</p>
+        </div>
+        <p style="margin-top: 1rem;">⚡ Com bioinsumos e micorrizas, o solo se torna <strong>vivo</strong>: fungos benéficos, minhocas e raízes profundas sequestram carbono.</p>
+    </section>
+
+    <!-- O LADO B (Desafios Críticos) -->
+    <section>
+        <h2><i class="fas fa-balance-scale"></i> O Lado B: desafios reais</h2>
+        <div class="lado-b">
+            <i class="fas fa-truck fa-2x" style="float: right;"></i>
+            <h3>Logística de seres vivos & treinamento</h3>
+            <p>Transportar insetos vivos e fungos por todo o território brasileiro exige cadeia de frio e tempo de entrega crítico. Além disso, muitos produtores ainda carecem de assistência técnica especializada. O manejo biológico exige mudança cultural, monitoramento constante e integração com outras práticas. Apesar dos avanços, há gargalos na escala de produção de bioagentes e na padronização de qualidade. Mas o Brasil lidera inovações e parcerias público-privadas para superar essas barreiras.</p>
+            <div style="margin-top: 1rem;"><i class="fas fa-chalkboard-user"></i> <strong>Necessidade:</strong> extensão rural focada em controle biológico e políticas de biofábricas comunitárias.</div>
+        </div>
+    </section>
+
+    <!-- Dados adicionais e fechamento -->
+    <section style="border-bottom: none;">
+        <div style="text-align: center; background: linear-gradient(145deg, #0F1E22, #081115); border-radius: 2rem; padding: 2rem;">
+            <i class="fas fa-dove fa-3x" style="color:#5de99b;"></i>
+            <h3 style="margin: 1rem 0;">“A nova era da agricultura é invisível aos olhos, mas gigante nos resultados.”</h3>
+            <p>Bioinsumos garantem segurança alimentar, proteção de polinizadores e solo fértil para as próximas gerações.</p>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p><i class="far fa-copyright"></i> Enciclopédia Digital Interativa • Laboratório Futurista — O micro que sustenta o macro. Dados técnicos com base no Programa Nacional de Bioinsumos e pesquisa Embrapa.</p>
+</footer>
+
+<script>
+    // 1. LUPA VIRTUAL (efeito de ampliação)
+    (function() {
+        const img = document.getElementById('leafImage');
+        const lens = document.getElementById('lens');
+        const wrapper = document.getElementById('zoomWrapper');
+        if (!img || !lens || !wrapper) return;
+
+        function updateLens(e) {
+            const rect = wrapper.getBoundingClientRect();
+            let x = e.clientX - rect.left;
+            let y = e.clientY - rect.top;
+            if (x < 0) x = 0;
+            if (y < 0) y = 0;
+            if (x > rect.width) x = rect.width;
+            if (y > rect.height) y = rect.height;
+            lens.style.left = x + 'px';
+            lens.style.top = y + 'px';
+            lens.style.display = 'block';
+
+            // zoom visual da imagem via transform scale (efeito de lupa realista)
+            const percentX = x / rect.width;
+            const percentY = y / rect.height;
+            const zoomLevel = 2.2;
+            const moveX = (percentX * 100);
+            const moveY = (percentY * 100);
+            img.style.transformOrigin = `${moveX}% ${moveY}%`;
+            img.style.transform = `scale(${zoomLevel})`;
+            img.style.transition = 'transform 0.1s ease';
         }
 
-        // Função 2: Contador Funcional e Lógica Matemática
-        let litrosEvitados = 0;
-        function simularImpacto() {
-            litrosEvitados += 500;
-            const elementoContador = document.getElementById("cont-quimicos");
-            
-            // Atualiza o texto do elemento na tela
-            elementoContador.innerText = litrosEvitados.toLocaleString('pt-BR');
-            
-            // Adiciona um efeito visual de cor ao clicar
-            elementoContador.style.color = "#4CAF50";
-            setTimeout(() => { elementoContador.style.color = "#2d5a27"; }, 300);
+        function resetZoom() {
+            lens.style.display = 'none';
+            img.style.transform = 'scale(1)';
+            img.style.transformOrigin = 'center center';
         }
 
-        // Função 3: Mostrar/Esconder Elemento (Toggle)
-        function toggleDetalhamento() {
-            const painel = document.getElementById("detalhes-tecnicos");
-            
-            if (painel.style.display === "none" || painel.style.display === "") {
-                painel.style.display = "block";
-            } else {
-                painel.style.display = "none";
-            }
-        }
-    </script>
+        wrapper.addEventListener('mousemove', updateLens);
+        wrapper.addEventListener('mouseleave', resetZoom);
+        // para toque em mobile: exibe uma mensagem
+        wrapper.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const fakeEvent = { clientX: touch.clientX, clientY: touch.clientY };
+            updateLens(fakeEvent);
+        });
+        wrapper.addEventListener('touchend', resetZoom);
+    })();
 
+    // 2. COMPARADOR DE SOLO (antes x depois)
+    const btnAntes = document.getElementById('btnAntes');
+    const btnDepois = document.getElementById('btnDepois');
+    const soloImg = document.getElementById('soloImage');
+    const soloDesc = document.getElementById('soloDesc');
+
+    // Imagens realísticas de solo compactado vs solo biológico (uso de unsplash com temática)
+    const antesImg = "https://images.unsplash.com/photo-1621285338490-cbf5f1d15c73?w=600&auto=format";
+    const depoisImg = "https://images.unsplash.com/photo-1598374871282-6ac519599ba6?w=600&auto=format";
+    const antesTexto = "❌ Solo compactado, ausência de porosidade, pouca matéria orgânica. Dependência química degradou a microbiota.";
+    const depoisTexto = "✅ Solo com agregados estáveis, presença de minhocas, hifas de micorrizas e raízes profundas. Carbono orgânico elevado.";
+
+    function setSolo(estado) {
+        if (estado === 'antes') {
+            soloImg.src = antesImg;
+            soloDesc.innerHTML = antesTexto;
+            btnAntes.classList.add('active');
+            btnDepois.classList.remove('active');
+        } else {
+            soloImg.src = depoisImg;
+            soloDesc.innerHTML = depoisTexto;
+            btnDepois.classList.add('active');
+            btnAntes.classList.remove('active');
+        }
+    }
+
+    btnAntes.addEventListener('click', () => setSolo('antes'));
+    btnDepois.addEventListener('click', () => setSolo('depois'));
+
+    // fallback se imagens demorarem: já carregado antes
+    setSolo('antes');
+
+    // 3. Opcional: pequeno efeito de tooltip na linha do tempo (para ser fluido)
+    console.log("Site interativo - O Micro que Alimenta o Macro");
+    
+    // Adicionar informações para a lupa: mensagem adicional dinâmica
+    const zoomResult = document.getElementById('zoomResultText');
+    if(zoomResult) {
+        const wrapperLens = document.querySelector('.zoom-image-wrapper');
+        wrapperLens.addEventListener('mouseenter', () => {
+            zoomResult.innerHTML = "🔬 Lupa ativada! Observe os ovos parasitados – as microvespas já fizeram o controle biológico.";
+        });
+        wrapperLens.addEventListener('mouseleave', () => {
+            zoomResult.innerHTML = "🔍 Área ampliada: ovos de Helicoverpa sendo parasitados por Trichogramma (pontos escuros).";
+        });
+    }
+</script>
 </body>
 </html>
